@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Round_Minecraft_Launcher.Cs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Round_Minecraft_Launcher.Control
+namespace Round_Minecraft_Launcher.Pages.Main_SubPages
 {
     /// <summary>
-    /// Download_Button.xaml 的交互逻辑
+    /// DownloadTask.xaml 的交互逻辑
     /// </summary>
-    public partial class Download_Button : UserControl
+    public partial class DownloadTask : Page
     {
-        public Download_Button()
+        public DownloadTask()
         {
             InitializeComponent();
+
+            GL.DownloadTaskBox = DownloadTaskBox;
         }
     }
 }

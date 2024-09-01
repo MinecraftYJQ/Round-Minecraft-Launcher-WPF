@@ -1,6 +1,7 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls;
 using Newtonsoft.Json.Linq;
 using Round_Minecraft_Launcher.Cs;
+using Round_Minecraft_Launcher.Cs.API.DownloadTask;
 using Round_Minecraft_Launcher.Pages.Main_SubPages.Download_SubPages;
 using System;
 using System.Collections.Generic;
@@ -98,16 +99,10 @@ namespace Round_Minecraft_Launcher.Pages.Main_SubPages
                             //Cs.Launcher.JavaEdtion.Download.Download_Game(id);
                             if (download.Content == "安装")
                             {
-                                this.Dispatcher.Invoke(() =>
+                                GL.MainWindow.Dispatcher.Invoke(() =>
                                 {
-                                    ContentDialog contentDialog = new ContentDialog();
-                                    contentDialog.Content = new System.Windows.Controls.Frame
-                                    {
-                                        Content = new Download_Games(id, contentDialog, true)
-                                    };
-
-                                    contentDialog.Title = "下载游戏";
-                                    contentDialog.ShowAsync();
+                                    Download_Games download_Games = new Download_Games(id, NewDownloadTask.GetItemUUID(), false);
+                                    NewDownloadTask.AddDownloadTask(download_Games);
                                 });
 
                                 download.Content = "启动";
@@ -118,7 +113,7 @@ namespace Round_Minecraft_Launcher.Pages.Main_SubPages
                                 del.Margin = new Thickness(0, 0, 70, 0);
                                 del.Click += (s, e) =>
                                 {
-                                    Directory.Delete(".minecraft\\versions\\" + id);
+                                    Directory.Delete(".minecraft\\versions\\" + id,true);
                                     grid.Children.Remove(del);
                                     download.Content = "安装";
                                 };
@@ -129,16 +124,10 @@ namespace Round_Minecraft_Launcher.Pages.Main_SubPages
                                 Task.Run(() =>
                                 {
                                     string vers = id;
-                                    this.Dispatcher.Invoke(() =>
-                                    {
-                                        ContentDialog contentDialog = new ContentDialog();
-                                        contentDialog.Content = new System.Windows.Controls.Frame
-                                        {
-                                            Content= new Download_Games(vers, contentDialog,true)
-                                        };
 
-                                        contentDialog.Title = "下载游戏";
-                                        contentDialog.ShowAsync();
+                                    GL.MainWindow.Dispatcher.Invoke(() =>
+                                    {
+                                        NewDownloadTask.AddDownloadTask(new Download_Games(vers, NewDownloadTask.GetItemUUID(), true));
                                     });
                                 });
                             }

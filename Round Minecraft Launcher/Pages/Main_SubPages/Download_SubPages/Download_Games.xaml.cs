@@ -23,13 +23,12 @@ namespace Round_Minecraft_Launcher.Pages.Main_SubPages.Download_SubPages
     /// </summary>
     public partial class Download_Games : System.Windows.Controls.Page
     {
-        public Download_Games(string version, ContentDialog contente, bool launch=false)
+        public Download_Games(string version, string uuid, bool launch=false)
         {
             InitializeComponent();
             Name.Content="正在下载 Minecraft "+version;
 
-            Cs.Launcher.JavaEdtion.Download.Download_Game(version,p1,p2,contente, launch);
-            GL.Frame.Navigate(GL.temppage);
+            Cs.Launcher.JavaEdtion.Download.Download_Game(version,p1,p2,uuid, launch);
         }
     }
 }

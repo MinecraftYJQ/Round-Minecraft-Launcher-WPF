@@ -119,41 +119,25 @@ namespace Round_Minecraft_Launcher.Pages.Main_SubPages.Download_SubPages
                             //Cs.Launcher.JavaEdtion.Download.Download_Game(id);
                             if (download.Content == "安装")
                             {
-                                try
+                                string itemuuid = NewDownloadTask.GetItemUUID();
+
+                                Download_SubPages.Download_Bedrock_Game_Page download_Games = new Download_SubPages.Download_Bedrock_Game_Page(temp[1], temp[0], itemuuid);
+                                //GL.Frame.Navigate(download_Games);
+                                NewDownloadTask.AddDownloadTask(download_Games);
+
+                                download.Content = "启动";
+
+                                Button del = new Button();
+                                del.Content = "删除";
+                                del.HorizontalAlignment = HorizontalAlignment.Right;
+                                del.Margin = new Thickness(0, 0, 70, 0);
+                                del.Click += (s, e) =>
                                 {
-                                    Download_SubPages.Download_Bedrock_Game_Page download_Games = new Download_SubPages.Download_Bedrock_Game_Page(temp[1], temp[0]);
-                                    //GL.Frame.Navigate(download_Games);
-                                    NewDownloadTask.AddDownloadTask(download_Games);
-
-                                    download.Content = "启动";
-
-                                    Button del = new Button();
-                                    del.Content = "删除";
-                                    del.HorizontalAlignment = HorizontalAlignment.Right;
-                                    del.Margin = new Thickness(0, 0, 70, 0);
-                                    del.Click += (s, e) =>
-                                    {
-                                        File.Delete(".minecraft\\bedrock\\" + temp[0] + ".appx");
-                                        grid.Children.Remove(del);
-                                        download.Content = "安装";
-                                    };
-                                    grid.Children.Add(del);
-                                }
-                                catch
-                                {
-                                    GL.Frame.Dispatcher.Invoke(() => {
-                                        //GL.Frame.Navigate(GL.temppage);
-                                        ContentDialog contentDialog = new ContentDialog();
-                                        contentDialog.Title = "下载错误";
-                                        contentDialog.Content = new Label
-                                        {
-                                            Content = "无法连接至服务器..."
-                                        };
-
-                                        contentDialog.PrimaryButtonText = "确定";
-                                        contentDialog.ShowAsync();
-                                    });
-                                }
+                                    File.Delete(".minecraft\\bedrock\\" + temp[0] + ".appx");
+                                    grid.Children.Remove(del);
+                                    download.Content = "安装";
+                                };
+                                grid.Children.Add(del);
                             }
                             else
                             {

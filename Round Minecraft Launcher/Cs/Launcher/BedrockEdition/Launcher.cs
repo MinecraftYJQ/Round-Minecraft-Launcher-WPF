@@ -63,6 +63,8 @@ namespace Round_Minecraft_Launcher.Cs.Launcher.BedrockEdition
 
             process.WaitForExit();
             File.WriteAllText("RMCL\\Bedrock", version_path);
+
+            Debug.WriteLine("已完成安装");
         }
     }
 }

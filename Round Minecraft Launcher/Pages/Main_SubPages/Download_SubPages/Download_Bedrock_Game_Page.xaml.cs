@@ -23,6 +23,8 @@ using iNKORE.UI.WPF.Modern.Controls;
 using Round_Minecraft_Launcher.Cs.Launcher.BedrockEdition;
 using System.Text.RegularExpressions;
 using System.IO.Compression;
+using Round_Minecraft_Launcher.Cs.API.DownloadTask;
+using Round_Minecraft_Launcher.Cs.API.MessageSystem;
 
 namespace Round_Minecraft_Launcher.Pages.Main_SubPages.Download_SubPages
 {
@@ -139,7 +141,7 @@ namespace Round_Minecraft_Launcher.Pages.Main_SubPages.Download_SubPages
                 Console.WriteLine("An error occurred: " + ex.Message);
             }
         }
-        public Download_Bedrock_Game_Page(string uuid,string version)
+        public Download_Bedrock_Game_Page(string uuid,string version,string itemuuid)
         {
             InitializeComponent();
             Names.Content = "正在下载 Minecraft Bedrock " + version;
@@ -166,31 +168,20 @@ namespace Round_Minecraft_Launcher.Pages.Main_SubPages.Download_SubPages
 
                         GL.Frame.Dispatcher.Invoke(() =>
                         {
-                            GL.Frame.Navigate(GL.temppage);
+                            DelDownloadTask.DelItemByUUID(itemuuid);
                         });
                     }
                     else
                     {
                         GL.Frame.Dispatcher.Invoke(() =>
                         {
-                            GL.Frame.Navigate(GL.temppage);
+                            DelDownloadTask.DelItemByUUID(itemuuid);
                         });
                     }
                 }
                 catch(Exception ex)
                 {
-                    GL.Frame.Dispatcher.Invoke(() => {
-                        GL.Frame.Navigate(GL.temppage);
-                        ContentDialog contentDialog = new ContentDialog();
-                        contentDialog.Title = "下载错误";
-                        contentDialog.Content = new Label
-                        {
-                            Content = "无法连接至服务器..."
-                        };
-
-                        contentDialog.PrimaryButtonText = "确定";
-                        contentDialog.ShowAsync();
-                    });
+                    NewMessage.Show("无法连接至服务器", "下载错误", 3);
                 }
             });
         }

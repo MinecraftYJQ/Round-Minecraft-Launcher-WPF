@@ -26,5 +26,10 @@ namespace Round_Minecraft_Launcher.Cs
         public static string Launcher_Update_Config = null;
         public static bool openmessage = false;
         public static MainWindow MainWindow;
+
+        public static List<string> DownloadTaskItemUUID = new List<string>();
+        public static ListBox DownloadTaskBox;
+
+        public static Grid MessageBoxGrid;
     }
 }

@@ -8,6 +8,8 @@ using Newtonsoft.Json.Linq;
 using Round.Online.Luncher.Pages;
 using Round_Minecraft_Launcher.Cs;
 using Round_Minecraft_Launcher.Cs.API;
+using Round_Minecraft_Launcher.Cs.API.DownloadTask;
+using Round_Minecraft_Launcher.Cs.API.MessageSystem;
 using Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion;
 using Round_Minecraft_Launcher.Pages.Main_SubPages;
 using Round_Minecraft_Launcher.Pages.Main_SubPages.Download_SubPages;
@@ -96,6 +98,8 @@ namespace Round_Minecraft_Launcher.Pages
 
             GL.back = true;
             GL.temppage = this;
+
+            GL.MessageBoxGrid = MessageBoxGrid;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -116,6 +120,7 @@ namespace Round_Minecraft_Launcher.Pages
         public About about = new About();
         public Online.Home_Link_Page Link_Main_Page = new Online.Home_Link_Page();
         public Main_SubPages.Download downloads = new Main_SubPages.Download();
+        public Main_SubPages.DownloadTask downloadstask = new Main_SubPages.DownloadTask();
         private void NavigationView_SelectionChanged(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             var item = sender.SelectedItem;
@@ -141,6 +146,10 @@ namespace Round_Minecraft_Launcher.Pages
             {
                 page = Link_Main_Page;
             }
+            else if (item == NavigationViewItem_DownloadTask)
+            {
+                page = downloadstask;
+            }
 
             if (page != null)
             {
@@ -159,17 +168,9 @@ namespace Round_Minecraft_Launcher.Pages
                 Task.Run(() =>
                 {
                     string vers = File.ReadAllText("RMCL\\version").Split('|')[0];
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        ContentDialog content = new ContentDialog();
-                        content.Content = new System.Windows.Controls.Frame
-                        {
-                            Content= new Download_Games(vers, content, true)
-                        };
 
-                        content.Title = "启动游戏";
-
-                        content.ShowAsync();
+                    this.Dispatcher.Invoke(() => {
+                        NewDownloadTask.AddDownloadTask(new Download_Games(vers, NewDownloadTask.GetItemUUID(), true));
                     });
                 });
             }

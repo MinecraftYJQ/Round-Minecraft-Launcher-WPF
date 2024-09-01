@@ -11,6 +11,9 @@ using System.Net.Http;
 using System.Windows.Controls;
 using Round_Minecraft_Launcher.Pages;
 using iNKORE.UI.WPF.Modern.Controls;
+using Round_Minecraft_Launcher.Cs.API.DownloadTask;
+using System.Diagnostics;
+using Round_Minecraft_Launcher.Cs.API.MessageSystem;
 
 namespace Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion
 {
@@ -31,7 +34,6 @@ namespace Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion
                 catch { return "dont"; }
             }
         }
-        static ContentDialog contentDialog;
         private static byte[] getfile(string url)
         {
             using (HttpClient client = new HttpClient())
@@ -51,14 +53,14 @@ namespace Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion
                 }
             }
         }
-        public static void Download_Game(string version, System.Windows.Controls.ProgressBar progressBar, System.Windows.Controls.ProgressBar progressBar1, ContentDialog content, bool launch = false)
+        public static void Download_Game(string version, System.Windows.Controls.ProgressBar progressBar, System.Windows.Controls.ProgressBar progressBar1, string uuid, bool launch = false)
         {
-            contentDialog = content;
+            uuids = uuid;
             if (launch)
             {
                 if (!File.Exists($".minecraft\\versions\\{version}\\{version}.json"))
                 {
-                    Download_Game(version, progressBar, progressBar1, content,false);
+                    Download_Game(version, progressBar, progressBar1, uuid, false);
                 }
                 try
                 {
@@ -66,21 +68,7 @@ namespace Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion
                 }
                 catch
                 {
-                    GL.Frame.Dispatcher.Invoke(() =>
-                    {
-                        GL.Frame.Navigate(GL.temppage);
-
-                        GL.Frame.Navigate(GL.temppage);
-                        ContentDialog contentDialog = new ContentDialog();
-                        contentDialog.Title = "下载错误";
-                        contentDialog.Content = new Label
-                        {
-                            Content = "无法连接至服务器..."
-                        };
-
-                        contentDialog.PrimaryButtonText = "确定";
-                        contentDialog.ShowAsync();
-                    });
+                    NewMessage.Show("无法连接至服务器", "下载错误",3);
                 }
             }
             else
@@ -111,21 +99,7 @@ namespace Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion
                                 }
                                 catch
                                 {
-                                    GL.Frame.Dispatcher.Invoke(() =>
-                                    {
-                                        GL.Frame.Navigate(GL.temppage);
-
-                                        GL.Frame.Navigate(GL.temppage);
-                                        ContentDialog contentDialog = new ContentDialog();
-                                        contentDialog.Title = "下载错误";
-                                        contentDialog.Content = new Label
-                                        {
-                                            Content = "无法连接至服务器..."
-                                        };
-
-                                        contentDialog.PrimaryButtonText = "确定";
-                                        contentDialog.ShowAsync();
-                                    });
+                                    NewMessage.Show("无法连接至服务器", "下载错误", 3);
                                 }
                             }
                         }
@@ -133,11 +107,12 @@ namespace Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion
                 });
             }
         }
+        static string uuids;
 
         private static void down(string get_jsonsss,string version, System.Windows.Controls.ProgressBar progressBar, System.Windows.Controls.ProgressBar progressBar1,bool launch)
         {
+            Debug.WriteLine(version);
             //string get_jsonsss = geturl(version_json_url);
-
             Directory.CreateDirectory($".minecraft\\versions\\{version}");
             File.WriteAllText($".minecraft\\versions\\{version}\\{version}.json", get_jsonsss);
             RootObject rootObject = JsonConvert.DeserializeObject<RootObject>(get_jsonsss);
@@ -360,10 +335,7 @@ namespace Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion
         {
             Task.Run(() =>
             {
-                contentDialog.Dispatcher.Invoke(() =>
-                {
-                    contentDialog.Hide();
-                });
+                DelDownloadTask.DelItemByUUID(uuids);
                 Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion.Launch.Launcher_Game(vers, File.ReadAllText("RMCL\\Java"), File.ReadAllText("RMCL\\Name"));
             });
         }
