@@ -1,0 +1,87 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.18362.0</TargetFramework>
+    <RootNamespace>Round_Minecraft_Launcher</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <ApplicationIcon>RMCL_Icon.ico</ApplicationIcon>
+    <ApplicationManifest>Cs\app.manifest</ApplicationManifest>
+    <Version>1.0.4</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Control\Minecraft_Version.png" />
+    <None Remove="Control\Version\Minecraft_Version.png" />
+    <None Remove="Minecraft_Version.png" />
+    <None Remove="Online\RMCL_Icon.png" />
+    <None Remove="Pages\Main_SubPages\Download_SubPages\bedrock.png" />
+    <None Remove="Online\mtiIcon-caozuo-guanlian.png" />
+    <None Remove="Pages\RMCL_Icon.png" />
+    <None Remove="Pages\steve.png" />
+    <None Remove="头像.OLD.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="RMCL_Icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iNKORE.UI.WPF.Modern" Version="0.9.30" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.64.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.7" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Control\Version\Minecraft_Version.png" />
+    <Resource Include="Minecraft_Version.png" />
+    <Resource Include="Online\RMCL_Icon.png" />
+    <Resource Include="Pages\Main_SubPages\Download_SubPages\bedrock.png" />
+    <Resource Include="Online\mtiIcon-caozuo-guanlian.png" />
+    <Resource Include="Pages\RMCL_Icon.png" />
+    <Resource Include="Pages\steve.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Windows\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MinecraftAccessToknLibrary">
+      <HintPath>..\..\MinecraftAccessToknLibrary\bin\Debug\net6.0\MinecraftAccessToknLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
