@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Round_Minecraft_Launcher.Control.Personalize_Setting_Control.Personalize_ComBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Round_Minecraft_Launcher.Control.Personalize_Setting_Control"
+             mc:Ignorable="d" 
+             xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern" d:DesignWidth="800" Height="117">
+    <Grid>
+        <RadioButton Content="默认背景" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <RadioButton Content="自定义背景" Margin="130,10,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="Com" Margin="10,71,10,0" d:LayoutOverrides="HorizontalAlignment, Width" HorizontalAlignment="Stretch" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBoxItem Content="亚克力"/>
+            <ComboBoxItem Content="云母"/>
+            <ComboBoxItem Content="选项卡"/>
+            <ComboBoxItem Content="无"/>
+        </ComboBox>
+        <Label Content="背景样式" Margin="10,47,10,0" Height="19" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+    </Grid>
+</UserControl>
