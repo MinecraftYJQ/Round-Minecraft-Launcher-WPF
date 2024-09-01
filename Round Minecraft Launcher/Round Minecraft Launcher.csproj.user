@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>D:\User File\Desktop\Round Minecraft Launcher\Round Minecraft Launcher\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Control\Download_Button.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Control\Personalize_Setting_Control\Personalize_ComBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Control\Version\Version_Control.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Online\Home_Link_Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\API\Update.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Load_Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_SubPages\About.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_SubPages\Download.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_SubPages\DownloadTask.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_SubPages\Download_SubPages\Download_Bedrock.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_SubPages\Download_SubPages\Download_Bedrock_Game_Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_SubPages\Download_SubPages\Download_Java.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_SubPages\Download_SubPages\Download_Games.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_SubPages\Home.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_SubPages\Launch_SubPages\Bedrock_Launcher_Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Main_SubPages\Setting.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Setting_SubPages\GameSetting_SubPages\Select_Version_JavaEdtion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Setting_SubPages\Game_Setting.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Setting_SubPages\Personalize_Setting.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Setting_SubPages\UserSetting_SubPages\Add_User_Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Setting_SubPages\UserSetting_SubPages\Login_Microsoft_Page.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Setting_SubPages\UserSetting_SubPages\Login_SubPages\Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Setting_SubPages\User_Setting.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Control\Download_Button.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Control\Personalize_Setting_Control\Personalize_ComBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Control\Version\Version_Control.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Online\Home_Link_Page.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\API\Update.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Load_Page.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_Page.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_SubPages\About.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_SubPages\Download.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_SubPages\DownloadTask.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_SubPages\Download_SubPages\Download_Bedrock.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_SubPages\Download_SubPages\Download_Bedrock_Game_Page.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_SubPages\Download_SubPages\Download_Java.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_SubPages\Download_SubPages\Download_Games.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_SubPages\Home.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_SubPages\Launch_SubPages\Bedrock_Launcher_Page.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Main_SubPages\Setting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Setting_SubPages\GameSetting_SubPages\Select_Version_JavaEdtion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Setting_SubPages\Game_Setting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Setting_SubPages\Personalize_Setting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Setting_SubPages\UserSetting_SubPages\Add_User_Page.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Setting_SubPages\UserSetting_SubPages\Login_Microsoft_Page.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Setting_SubPages\UserSetting_SubPages\Login_SubPages\Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Setting_SubPages\User_Setting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
