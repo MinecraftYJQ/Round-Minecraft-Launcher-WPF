@@ -107,6 +107,21 @@ namespace Round_Minecraft_Launcher
             {
                 BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.None);
             }
+
+            try
+            {
+                if (File.ReadAllText("RMCL\\Skin\\Theme") == "Dark")
+                {
+                    ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
+                }
+                else
+                {
+                    ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
+                }
+            }
+            catch { }
+
+            GL.MessageBoxGrid = MessageBoxGrid;
         }
 
         private void Window_Closed(object sender, EventArgs e)
