@@ -1,4 +1,5 @@
-﻿using Round_Minecraft_Launcher.Pages;
+﻿using iNKORE.UI.WPF.Modern.Controls;
+using Round_Minecraft_Launcher.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,5 +32,7 @@ namespace Round_Minecraft_Launcher.Cs
         public static ListBox DownloadTaskBox;
 
         public static Grid MessageBoxGrid;
+
+        public static NavigationView MainNav;
     }
 }

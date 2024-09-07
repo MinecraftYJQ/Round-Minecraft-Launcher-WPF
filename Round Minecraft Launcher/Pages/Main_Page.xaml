@@ -13,6 +13,7 @@
         <ui:NavigationView IsPaneOpen="True" SelectionChanged="NavigationView_SelectionChanged" Name="Nav" IsBackButtonVisible="Collapsed" Margin="0,0,0,68">
 
             <ui:NavigationView.MenuItems>
+                 
                 <ui:NavigationViewItem Content="主页" x:Name="NavigationViewItem_Home">
                     <ui:NavigationViewItem.Icon>
                         <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}"/>

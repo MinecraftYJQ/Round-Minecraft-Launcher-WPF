@@ -10,6 +10,7 @@ using Round_Minecraft_Launcher.Cs;
 using Round_Minecraft_Launcher.Cs.API;
 using Round_Minecraft_Launcher.Cs.API.DownloadTask;
 using Round_Minecraft_Launcher.Cs.API.MessageSystem;
+using Round_Minecraft_Launcher.Cs.API.SDK;
 using Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion;
 using Round_Minecraft_Launcher.Pages.Main_SubPages;
 using Round_Minecraft_Launcher.Pages.Main_SubPages.Download_SubPages;
@@ -100,6 +101,8 @@ namespace Round_Minecraft_Launcher.Pages
             GL.temppage = this;
 
             GL.MessageBoxGrid = MessageBoxGrid;
+            GL.MainNav = Nav;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

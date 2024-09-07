@@ -1,4 +1,6 @@
-﻿using System;
+﻿using iNKORE.UI.WPF.Modern.Common.IconKeys;
+using Round_Minecraft_Launcher.Cs.API.SDK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,15 @@ namespace Round_Minecraft_Launcher.Pages.Main_SubPages
         public Home()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Function.RegisterPage(new Function.FuncConifg
+            {
+                Title = "测试项目",
+                IconFontStr = SegoeFluentIcons.Apps
+            });
         }
     }
 }
