@@ -27,16 +27,68 @@ namespace Round_Minecraft_Launcher.Control.Personalize_Setting_Control
     /// </summary>
     public partial class Personalize_ComBox : UserControl
     {
+        private void SetBackgroundImage(string imagePath)
+        {
+            if (imagePath != "")
+            {
+                // 创建一个新的BitmapImage对象
+                BitmapImage bitmap = new BitmapImage();
+
+                // 将图片路径设置为BitmapImage对象的UriSource
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute);
+                bitmap.EndInit();
+
+                // 将BitmapImage设置为Grid的背景
+                ImageBrush imageBrush = new ImageBrush(bitmap);
+                imageBrush.Stretch = Stretch.UniformToFill;
+                Cs.GL.BackGrid.Background = imageBrush;
+            }
+        }   
         public Personalize_ComBox()
         {
             InitializeComponent();
-            try
+            if (File.Exists("RMCL\\Skin\\BackImage") && File.Exists("RMCL\\Skin\\BackMs"))
             {
-                Com.SelectedIndex = int.Parse(File.ReadAllText("RMCL\\Skin\\BackdropHelper"));
+                if (File.ReadAllText("RMCL\\Skin\\BackMs") != "0")
+                {
+                    images.IsChecked = true;
+                    File.WriteAllText("RMCL\\Skin\\BackMs", "1");
+
+                    SetBackgroundImage(File.ReadAllText("RMCL\\Skin\\BackImage").Replace("\"",""));
+                    Paths.Text = File.ReadAllText("RMCL\\Skin\\BackImage").Replace("\"", "");
+                    Paths.Visibility = Visibility.Visible;
+                    Com.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    Paths.Visibility = Visibility.Hidden;
+                    Com.Visibility = Visibility.Visible;
+                    File.WriteAllText("RMCL\\Skin\\BackMs", "0");
+                    rmclimage.IsChecked = true;
+                    try
+                    {
+                        Com.SelectedIndex = int.Parse(File.ReadAllText("RMCL\\Skin\\BackdropHelper"));
+                    }
+                    catch
+                    {
+                        Com.SelectedIndex = 1;
+                    }
+                }
             }
-            catch
+            else
             {
-                Com.SelectedIndex = 1;
+                rmclimage.IsChecked = true;
+                Paths.Visibility = Visibility.Hidden;
+                Com.Visibility = Visibility.Visible;
+                try
+                {
+                    Com.SelectedIndex = int.Parse(File.ReadAllText("RMCL\\Skin\\BackdropHelper"));
+                }
+                catch
+                {
+                    Com.SelectedIndex = 1;
+                }
             }
 
             try
@@ -101,6 +153,43 @@ namespace Round_Minecraft_Launcher.Control.Personalize_Setting_Control
             else
             {
                 BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.None);
+            }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            MsSave();
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            MsSave();
+        }
+
+        private void MsSave()
+        {
+            if (Com != null)
+            {
+                if ((bool)rmclimage.IsChecked)
+                {
+                    File.WriteAllText("RMCL\\Skin\\BackMs", "0");
+                    Paths.Visibility = Visibility.Hidden;
+                    Com.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    File.WriteAllText("RMCL\\Skin\\BackMs", "1");
+                    Paths.Visibility = Visibility.Visible;
+                    Com.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
+        private void Paths_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Paths.Text != "TextBox")
+            {
+                File.WriteAllText("RMCL\\Skin\\BackImage", Paths.Text.Replace("\"", ""));
             }
         }
     }

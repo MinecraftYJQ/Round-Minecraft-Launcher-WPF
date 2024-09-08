@@ -1,5 +1,6 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls;
 using Round_Minecraft_Launcher.Cs;
+using Round_Minecraft_Launcher.EntityClasses;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -46,6 +47,11 @@ namespace Round_Minecraft_Launcher.Pages.Setting_SubPages
                     }
 
                     NameList.Items.Add(item);
+
+                    User_Control_Config.UserConfig userConfig = new User_Control_Config.UserConfig();
+                    userConfig.OfflineConfig.UserName = message[1];
+                    userConfig.UserType = User_Control_Config.UserType.Offline;
+                    WrapBox.Children.Add(new Control.UserNameControl.UserNameControl(userConfig));
                 }
             }
             else

@@ -1,0 +1,17 @@
+﻿<Page x:Class="Round_Minecraft_Launcher.Pages.Setting_SubPages.UserSetting_SubPages.UserNameControl_SubPages.Setting_UserNameControl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Round_Minecraft_Launcher.Pages.Setting_SubPages.UserSetting_SubPages.UserNameControl_SubPages"
+      mc:Ignorable="d" 
+      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+      Title="Setting_UserNameControl" Height="240" Width="380" MinWidth="380" MinHeight="240">
+
+    <Grid>
+
+        <Label Content="玩家名：" Margin="115,10,10,0" Height="21" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+        <Image Margin="10,10,270,130" Width="100" Height="100" Source="/Pages/Setting_SubPages/UserSetting_SubPages/UserNameControl_SubPages/steve.png"/>
+
+    </Grid>
+</Page>

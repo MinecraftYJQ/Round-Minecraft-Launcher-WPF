@@ -10,8 +10,8 @@
         <Button Margin="0,10,10,0" VerticalAlignment="Top" Click="Button_Click_1" HorizontalAlignment="Right" Height="37" Width="36">
             <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.DarkTheme_20_Filled}" HorizontalAlignment="Center" Height="14" Width="28"/>
         </Button>
-        <RadioButton Content="默认背景" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <RadioButton Content="自定义背景" Margin="130,10,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rmclimage" Content="默认背景" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="False" Checked="RadioButton_Checked"/>
+        <RadioButton x:Name="images" Content="自定义背景" Margin="130,10,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked_1"/>
         <ComboBox x:Name="Com" Margin="10,71,10,0" d:LayoutOverrides="HorizontalAlignment, Width" HorizontalAlignment="Stretch" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBoxItem Content="亚克力"/>
             <ComboBoxItem Content="云母"/>
@@ -19,5 +19,6 @@
             <ComboBoxItem Content="无"/>
         </ComboBox>
         <Label Content="背景样式" Margin="10,47,10,0" Height="19" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+        <TextBox x:Name="Paths" Margin="10,71,10,14" TextWrapping="Wrap" Text="TextBox" d:LayoutOverrides="HorizontalAlignment" TextChanged="Paths_TextChanged"/>
     </Grid>
 </UserControl>

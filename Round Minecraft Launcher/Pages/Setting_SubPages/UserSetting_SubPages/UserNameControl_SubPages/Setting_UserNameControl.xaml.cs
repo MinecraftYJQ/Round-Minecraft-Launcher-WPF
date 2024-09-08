@@ -1,6 +1,4 @@
-﻿using iNKORE.UI.WPF.Modern.Common.IconKeys;
-using Round_Minecraft_Launcher.Cs.API.SDK;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Round_Minecraft_Launcher.Pages.Main_SubPages
+namespace Round_Minecraft_Launcher.Pages.Setting_SubPages.UserSetting_SubPages.UserNameControl_SubPages
 {
     /// <summary>
-    /// Home.xaml 的交互逻辑
+    /// Setting_UserNameControl.xaml 的交互逻辑
     /// </summary>
-    public partial class Home : Page
+    public partial class Setting_UserNameControl : Page
     {
-        public Home()
+        public Setting_UserNameControl()
         {
             InitializeComponent();
         }

@@ -9,7 +9,6 @@
       Title="Home">
 
     <Grid>
-        <Button Content="测试" Click="Button_Click"></Button>
         <Label Content="欢迎回来" FontSize="22" Margin="0,62,0,0" HorizontalContentAlignment="Center" Height="33" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
     </Grid>
 </Page>

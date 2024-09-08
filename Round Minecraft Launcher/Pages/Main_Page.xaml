@@ -11,51 +11,6 @@
 
     <Grid>
         <ui:NavigationView IsPaneOpen="True" SelectionChanged="NavigationView_SelectionChanged" Name="Nav" IsBackButtonVisible="Collapsed" Margin="0,0,0,68">
-
-            <ui:NavigationView.MenuItems>
-                 
-                <ui:NavigationViewItem Content="主页" x:Name="NavigationViewItem_Home">
-                    <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Home}"/>
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-
-                <ui:NavigationViewItem Content="版本管理" x:Name="NavigationViewItem_Download">
-                    <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Manage}"/>
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-
-                <ui:NavigationViewItem Content="联机" x:Name="NavigationViewItem_Link">
-                    <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Link}"/>
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-
-            </ui:NavigationView.MenuItems>
-
-            <ui:NavigationView.FooterMenuItems>
-
-                <ui:NavigationViewItem Content="下载任务" x:Name="NavigationViewItem_DownloadTask">
-                    <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.CloudDownload}"/>
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-
-                <ui:NavigationViewItem Content="设置" x:Name="NavigationViewItem_Setting">
-                    <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Settings}"/>
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-
-                <ui:NavigationViewItem Content="关于" x:Name="NavigationViewItem_About">
-                    <ui:NavigationViewItem.Icon>
-                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Info}"/>
-                    </ui:NavigationViewItem.Icon>
-                </ui:NavigationViewItem>
-
-            </ui:NavigationView.FooterMenuItems>
-
             <Border>
                 <ui:Frame Name="Frame_Main"></ui:Frame>
             </Border>

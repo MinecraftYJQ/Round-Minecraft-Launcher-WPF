@@ -81,10 +81,14 @@ namespace Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion
                                 ZipFile.ExtractToDirectory(".minecraft\\libraries\\" + nativesWindowsArtifact.Path, $"D:\\User File\\Desktop\\MinecraftLauncher_Test\\MinecraftLauncher_Test\\bin\\Debug\\.minecraft\\versions\\{version_str}\\{version_str}-natives");
                             }
                             catch { }
-                            if (Directory.Exists($"D:\\User File\\Desktop\\MinecraftLauncher_Test\\MinecraftLauncher_Test\\bin\\Debug\\.minecraft\\versions\\{version_str}\\{version_str}-natives\\META-INF"))
+                            try
                             {
-                                Directory.Delete($"D:\\User File\\Desktop\\MinecraftLauncher_Test\\MinecraftLauncher_Test\\bin\\Debug\\.minecraft\\versions\\{version_str}\\{version_str}-natives\\META-INF", true);
+                                if (Directory.Exists($"D:\\User File\\Desktop\\MinecraftLauncher_Test\\MinecraftLauncher_Test\\bin\\Debug\\.minecraft\\versions\\{version_str}\\{version_str}-natives\\META-INF"))
+                                {
+                                    Directory.Delete($"D:\\User File\\Desktop\\MinecraftLauncher_Test\\MinecraftLauncher_Test\\bin\\Debug\\.minecraft\\versions\\{version_str}\\{version_str}-natives\\META-INF", true);
+                                }
                             }
+                            catch { }
                         }
                     }
                 }
@@ -112,35 +116,38 @@ namespace Round_Minecraft_Launcher.Cs.Launcher.JavaEdtion
             //Encoding.Default.GetString(Encoding.Default.GetBytes(bat))
             File.WriteAllText("RMCL\\Launcher.bat", Encoding.ASCII.GetString(Encoding.ASCII.GetBytes(bat)));
 
-
+            bool windows = false;
 
             ProcessStartInfo psi = new ProcessStartInfo("RMCL\\Launcher.bat");
-            psi.RedirectStandardOutput = true;
+            psi.RedirectStandardOutput = !windows;
             psi.RedirectStandardError = true;
             psi.RedirectStandardInput = true;
             psi.UseShellExecute = false;
-            psi.CreateNoWindow = true;
+            psi.CreateNoWindow = !windows;
 
             string logs = "";
             using (Process process = Process.Start(psi))
             {
-                if (process != null)
+                if (!windows)
                 {
-                    process.OutputDataReceived += (sender, e) =>
+                    if (process != null)
                     {
-                        if (!String.IsNullOrEmpty(e.Data))
+                        process.OutputDataReceived += (sender, e) =>
                         {
-                            Debug.WriteLine(e.Data.Replace("] [", "][RMCL Launcher]["));
-                            logs += e.Data.Replace("] [", "][RMCL Launcher][");
-                            if (e.Data.Contains("#RMCL")&& e.Data.Contains($"[CHAT]"))
+                            if (!String.IsNullOrEmpty(e.Data))
                             {
-                                Command.Start_Command(e.Data.Substring(e.Data.ToString().IndexOf("#RMCL") + 6, e.Data.Length - e.Data.ToString().IndexOf("#RMCL") - 6), process);
+                                Debug.WriteLine(e.Data.Replace("] [", "][RMCL Launcher]["));
+                                logs += e.Data.Replace("] [", "][RMCL Launcher][");
+                                if (e.Data.Contains("#RMCL") && e.Data.Contains($"[CHAT]"))
+                                {
+                                    Command.Start_Command(e.Data.Substring(e.Data.ToString().IndexOf("#RMCL") + 6, e.Data.Length - e.Data.ToString().IndexOf("#RMCL") - 6), process);
+                                }
                             }
-                        }
-                    };
-                    process.BeginOutputReadLine();
+                        };
+                        process.BeginOutputReadLine();
 
-                    process.WaitForExit();
+                        process.WaitForExit();
+                    }
                 }
             }
             return logs;

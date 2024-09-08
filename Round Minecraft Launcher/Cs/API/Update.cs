@@ -1,5 +1,6 @@
 ﻿using iNKORE.UI.WPF.Modern.Controls;
 using Newtonsoft.Json;
+using Round_Minecraft_Launcher.Cs.API.DownloadTask;
 using Round_Minecraft_Launcher.Pages.API;
 using System;
 using System.Collections.Generic;
@@ -69,11 +70,7 @@ namespace Round_Minecraft_Launcher.Cs.API
                                     var res = await contentDialog.ShowAsync();
                                     if (res == ContentDialogResult.Primary)
                                     {
-                                        GL.Frame.Dispatcher.Invoke(() =>
-                                        {
-                                            GL.Frame.Navigate(new Pages.API.Update(url, NewVersion));
-                                        });
-
+                                        NewDownloadTask.AddDownloadTask(new Pages.API.Update(url, NewVersion));
                                     }
                                 });
                                 break;

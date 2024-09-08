@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Round_Minecraft_Launcher.Cs.API.MessageSystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,8 @@ namespace Round_Minecraft_Launcher.Cs.API.DownloadTask
 
                 frame.Content = page;
                 GL.DownloadTaskBox.Items.Add(grid);
+
+                NewMessage.Show("任务已添加至下载任务内", "下载任务", 0);
             }));
         }
 

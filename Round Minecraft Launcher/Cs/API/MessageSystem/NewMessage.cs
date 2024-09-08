@@ -16,19 +16,23 @@ namespace Round_Minecraft_Launcher.Cs.API.MessageSystem
         {
             if(Thread != null) try { Thread.Abort(); }catch { }
 
-            GL.MessageBoxGrid.Dispatcher.Invoke(() => {
-                GL.MessageBoxGrid.Children.Clear();
+            try
+            {
+                GL.MessageBoxGrid.Dispatcher.Invoke(() => {
+                    GL.MessageBoxGrid.Children.Clear();
 
-                InfoBar infoBar = new InfoBar();
-                infoBar.Title = title;
-                infoBar.Message = message;
-                infoBar.IsClosable = true;
-                infoBar.Severity = (InfoBarSeverity)Ms;
-                infoBar.IsOpen = true;
-                infoBar.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+                    InfoBar infoBar = new InfoBar();
+                    infoBar.Title = title;
+                    infoBar.Message = message;
+                    infoBar.IsClosable = true;
+                    infoBar.Severity = (InfoBarSeverity)Ms;
+                    infoBar.IsOpen = true;
+                    infoBar.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
 
-                GL.MessageBoxGrid.Children.Add(infoBar);
-            });
+                    GL.MessageBoxGrid.Children.Add(infoBar);
+                });
+            }
+            catch { }
             Thread = new Thread(() =>
             {
                 Thread.Sleep(5000);

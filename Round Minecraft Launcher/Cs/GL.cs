@@ -34,5 +34,8 @@ namespace Round_Minecraft_Launcher.Cs
         public static Grid MessageBoxGrid;
 
         public static NavigationView MainNav;
+        public static System.Windows.Controls.Frame MainNavShow;
+
+        public static Grid BackGrid;
     }
 }

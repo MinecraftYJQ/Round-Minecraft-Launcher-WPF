@@ -81,16 +81,21 @@ namespace Round_Minecraft_Launcher.Pages
 
                     if (File.Exists("RMCL\\Name"))
                     {
-                        this.Dispatcher.Invoke(() =>
+                        try
                         {
-                            NameShow.Content = File.ReadAllText("RMCL\\Name");
-                        });
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                NameShow.Content = File.ReadAllText("RMCL\\Name");
+                            });
+                        }
+                        catch
+                        {
+                            NewMessage.Show("发生错误", "发送错误", 3);
+                        }
                     }
                     Thread.Sleep(500);
                 }
             });
-            Frame_Main.Navigate(Home, null, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromBottom });
-            Nav.SelectedItem = NavigationViewItem_Home;
 
             if (!GL.back)
             {
@@ -102,57 +107,72 @@ namespace Round_Minecraft_Launcher.Pages
 
             GL.MessageBoxGrid = MessageBoxGrid;
             GL.MainNav = Nav;
+            GL.MainNavShow = Frame_Main;
 
-        }
+            Home Home = new Home();
+            Main_SubPages.Setting setting = new Main_SubPages.Setting();
+            About about = new About();
+            Online.Home_Link_Page Link_Main_Page = new Online.Home_Link_Page();
+            Main_SubPages.Download downloads = new Main_SubPages.Download();
+            Main_SubPages.DownloadTask downloadstask = new Main_SubPages.DownloadTask();
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (ThemeManager.Current.ApplicationTheme == ApplicationTheme.Dark)
+            //上方
+            Function.RegisterPage(new Function.FuncConifg
             {
-                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
-            }
-            else
+                ItemPage = Home,
+                ItemTitle = "主页",
+                ItemType=Function.FuncConfigValue.Head,
+                IconFontStr = SegoeFluentIcons.Home,
+                IsThis = true
+            });
+            Function.RegisterPage(new Function.FuncConifg
             {
-                ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
-            }
+                ItemPage = downloads,
+                ItemTitle = "版本管理",
+                ItemType = Function.FuncConfigValue.Head,
+                IconFontStr = SegoeFluentIcons.Manage
+            });
+            Function.RegisterPage(new Function.FuncConifg
+            {
+                ItemPage = Link_Main_Page,
+                ItemTitle = "联机",
+                ItemType = Function.FuncConfigValue.Head,
+                IconFontStr = SegoeFluentIcons.Link
+            });
+
+            //下方
+            Function.RegisterPage(new Function.FuncConifg
+            {
+                ItemPage = downloadstask,
+                ItemTitle = "下载任务",
+                ItemType = Function.FuncConfigValue.Foot,
+                IconFontStr = SegoeFluentIcons.CloudDownload
+            });
+            Function.RegisterPage(new Function.FuncConifg
+            {
+                ItemPage = setting,
+                ItemTitle = "设置",
+                ItemType = Function.FuncConfigValue.Foot,
+                IconFontStr = SegoeFluentIcons.Settings
+            });
+            Function.RegisterPage(new Function.FuncConifg
+            {
+                ItemPage = about,
+                ItemTitle = "关于",
+                ItemType = Function.FuncConfigValue.Foot,
+                IconFontStr = SegoeFluentIcons.Info
+            });
+
+            //Nav.MenuItemsSource = 1;
         }
 
         public static System.Windows.Controls.Frame Frames_Main;
-        public Home Home = new Home();
-        public Main_SubPages.Setting setting=new Main_SubPages.Setting();
-        public About about = new About();
-        public Online.Home_Link_Page Link_Main_Page = new Online.Home_Link_Page();
-        public Main_SubPages.Download downloads = new Main_SubPages.Download();
-        public Main_SubPages.DownloadTask downloadstask = new Main_SubPages.DownloadTask();
         private void NavigationView_SelectionChanged(iNKORE.UI.WPF.Modern.Controls.NavigationView sender, iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs args)
         {
-            var item = sender.SelectedItem;
+            var item = Nav.SelectedItem;
             System.Windows.Controls.Page? page = null;
 
-            if (item == NavigationViewItem_Home)
-            {
-                page = Home;
-            }
-            else if (item == NavigationViewItem_Setting)
-            {
-                page = setting;
-            }
-            else if (item == NavigationViewItem_About)
-            {
-                page = about;
-            }
-            else if (item == NavigationViewItem_Download)
-            {
-                page = downloads;
-            }
-            else if (item == NavigationViewItem_Link)
-            {
-                page = Link_Main_Page;
-            }
-            else if (item == NavigationViewItem_DownloadTask)
-            {
-                page = downloadstask;
-            }
+            page = GetPage.GetSubPage(item.ToString());
 
             if (page != null)
             {
@@ -164,7 +184,7 @@ namespace Round_Minecraft_Launcher.Pages
         {
             if (GL.Game_Version_Str == null)
             {
-                Frame_Main.Navigate(setting);
+                Frame_Main.Navigate(GetPage.GetSubPage("设置"));
             }
             else
             {
