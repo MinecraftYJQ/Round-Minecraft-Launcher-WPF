@@ -15,6 +15,9 @@
     <Compile Update="Control\Personalize_Setting_Control\Personalize_ComBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Control\UserNameControl\UserNameControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Control\Version\Version_Control.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -78,6 +81,9 @@
     <Compile Update="Pages\Setting_SubPages\UserSetting_SubPages\Login_SubPages\Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\Setting_SubPages\UserSetting_SubPages\UserNameControl_SubPages\Setting_UserNameControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\Setting_SubPages\User_Setting.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -87,6 +93,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Control\Personalize_Setting_Control\Personalize_ComBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Control\UserNameControl\UserNameControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Control\Version\Version_Control.xaml">
@@ -153,6 +162,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\Setting_SubPages\UserSetting_SubPages\Login_SubPages\Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Setting_SubPages\UserSetting_SubPages\UserNameControl_SubPages\Setting_UserNameControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\Setting_SubPages\User_Setting.xaml">

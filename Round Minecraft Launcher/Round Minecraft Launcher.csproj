@@ -15,13 +15,16 @@
 
   <ItemGroup>
     <None Remove="Control\Minecraft_Version.png" />
+    <None Remove="Control\UserNameControl\steve.png" />
     <None Remove="Control\Version\Minecraft_Version.png" />
     <None Remove="Minecraft_Version.png" />
     <None Remove="Online\RMCL_Icon.png" />
     <None Remove="Pages\Main_SubPages\Download_SubPages\bedrock.png" />
     <None Remove="Online\mtiIcon-caozuo-guanlian.png" />
     <None Remove="Pages\RMCL_Icon.png" />
+    <None Remove="Pages\Setting_SubPages\UserSetting_SubPages\UserNameControl_SubPages\steve.png" />
     <None Remove="Pages\steve.png" />
+    <None Remove="Resources\steve.png" />
     <None Remove="头像.OLD.png" />
   </ItemGroup>
 
@@ -38,13 +41,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Control\UserNameControl\steve.png" />
     <Resource Include="Control\Version\Minecraft_Version.png" />
     <Resource Include="Minecraft_Version.png" />
     <Resource Include="Online\RMCL_Icon.png" />
     <Resource Include="Pages\Main_SubPages\Download_SubPages\bedrock.png" />
     <Resource Include="Online\mtiIcon-caozuo-guanlian.png" />
     <Resource Include="Pages\RMCL_Icon.png" />
+    <Resource Include="Pages\Setting_SubPages\UserSetting_SubPages\UserNameControl_SubPages\steve.png" />
     <Resource Include="Pages\steve.png" />
+    <Resource Include="Resources\steve.png" />
   </ItemGroup>
 
   <ItemGroup>

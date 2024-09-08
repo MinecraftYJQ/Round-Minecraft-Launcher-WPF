@@ -13,7 +13,10 @@
         ui:TitleBar.Height="36"
         ui:TitleBar.IsIconVisible="True"
         Title="Round Minecraft Launcher" Height="450" Width="800" MinWidth="800" MinHeight="450" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
-    <Grid>
+    <Grid Name="BackGrid">
+        <Grid.Background>
+            <ImageBrush Stretch="Uniform"/>
+        </Grid.Background>
         <ui:Frame x:Name="Main_Frame" Content="Frame" NavigationUIVisibility="Hidden"/>
         <Grid Name="MessageBoxGrid" Margin="235,7,190,9" d:LayoutOverrides="VerticalAlignment"/>
     </Grid>

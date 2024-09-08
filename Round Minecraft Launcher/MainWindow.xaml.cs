@@ -31,12 +31,31 @@ namespace Round_Minecraft_Launcher
     /// </summary>
     public partial class MainWindow : Window
     {
+        private void SetBackgroundImage(string imagePath)
+        {
+            if (imagePath != "")
+            {
+                // 创建一个新的BitmapImage对象
+                BitmapImage bitmap = new BitmapImage();
+
+                // 将图片路径设置为BitmapImage对象的UriSource
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute);
+                bitmap.EndInit();
+
+                // 将BitmapImage设置为Grid的背景
+                ImageBrush imageBrush = new ImageBrush(bitmap);
+                imageBrush.Stretch = Stretch.UniformToFill;
+                Cs.GL.BackGrid.Background = imageBrush;
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
             Directory.CreateDirectory("RMCL");
             Directory.CreateDirectory(".minecraft\\temp");
             Directory.CreateDirectory(".minecraft\\bedrock");
+            GL.BackGrid = BackGrid;
             if (Directory.Exists(".minecraft\\versions"))
             {
                 // 获取目录下的所有文件夹（不包括文件和子文件夹）
@@ -86,26 +105,55 @@ namespace Round_Minecraft_Launcher
 
             Directory.CreateDirectory("RMCL\\Skin");
             int backjs = 1;
-            try
+
+            if (File.Exists("RMCL\\Skin\\BackImage") && File.Exists("RMCL\\Skin\\BackMs"))
             {
-                backjs = int.Parse(File.ReadAllText("RMCL\\Skin\\BackdropHelper"));
-            }
-            catch { }
-            if (backjs == 0)
-            {
-                BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.Acrylic);
-            }
-            else if (backjs == 1)
-            {
-                BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.Mica);
-            }
-            else if (backjs == 2)
-            {
-                BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.Tabbed);
+                if (File.ReadAllText("RMCL\\Skin\\BackMs") != "0")
+                {
+                    File.WriteAllText("RMCL\\Skin\\BackMs", "1");
+
+                    SetBackgroundImage(File.ReadAllText("RMCL\\Skin\\BackImage"));
+                }
+                else
+                {
+                    File.WriteAllText("RMCL\\Skin\\BackMs", "0");
+
+                    if (backjs == 0)
+                    {
+                        BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.Acrylic);
+                    }
+                    else if (backjs == 1)
+                    {
+                        BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.Mica);
+                    }
+                    else if (backjs == 2)
+                    {
+                        BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.Tabbed);
+                    }
+                    else
+                    {
+                        BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.None);
+                    }
+                }
             }
             else
             {
-                BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.None);
+                if (backjs == 0)
+                {
+                    BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.Acrylic);
+                }
+                else if (backjs == 1)
+                {
+                    BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.Mica);
+                }
+                else if (backjs == 2)
+                {
+                    BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.Tabbed);
+                }
+                else
+                {
+                    BackdropHelper.Apply(Cs.GL.MainWindow, BackdropType.None);
+                }
             }
 
             try
